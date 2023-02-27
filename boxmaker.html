@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Click to Create Boxes</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      #message {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2em;
+        text-align: center;
+      }
+      canvas {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">Touch the left corner of the screen</div>
+    <script>
+      
+      function randomColor() {
+        var letters = "0123456789ABCDEF";
+        var color = "#";
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+      
+      function createBox(event) {
+        var canvas = document.getElementsByTagName("canvas")[0];
+        var context = canvas.getContext("2d");
+        var x = event.clientX - canvas.offsetLeft;
+        var y = event.clientY - canvas.offsetTop;
+        var size = Math.random() * 100 + 50;
+        context.fillStyle = randomColor();
+        context.fillRect(x - size / 2, y - size / 2, size, size);
+      }
+
+
+      var canvas = document.createElement("canvas");
+      document.body.appendChild(canvas);
+      canvas.addEventListener("click", createBox);
+    </script>
+  </body>
+</html>
