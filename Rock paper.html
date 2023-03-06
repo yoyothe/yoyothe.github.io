@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Rock Paper Scissors</title>
+</head>
+<body>
+	<h1>Rock Paper Scissors</h1>
+	<p>Choose your move:</p>
+	<button id="rock">Rock</button>
+	<button id="paper">Paper</button>
+	<button id="scissors">Scissors</button>
+	<p id="result"></p>
+
+	<script>
+		// Store the buttons in variables
+		var rockBtn = document.getElementById("rock");
+		var paperBtn = document.getElementById("paper");
+		var scissorsBtn = document.getElementById("scissors");
+
+		// Add event listeners to each button
+		rockBtn.addEventListener("click", function() {
+			play("rock");
+		});
+		paperBtn.addEventListener("click", function() {
+			play("paper");
+		});
+		scissorsBtn.addEventListener("click", function() {
+			play("scissors");
+		});
+
+		// Define the play function
+		function play(userMove) {
+			// Generate a random move for the computer
+			var moves = ["rock", "paper", "scissors"];
+			var computerMove = moves[Math.floor(Math.random() * moves.length)];
+
+			// Determine the winner
+			var result = "";
+			if (userMove == "rock" && computerMove == "scissors") {
+				result = "You win!";
+			} else if (userMove == "paper" && computerMove == "rock") {
+				result = "You win!";
+			} else if (userMove == "scissors" && computerMove == "paper") {
+				result = "You win!";
+			} else if (userMove == computerMove) {
+				result = "Tie!";
+			} else {
+				result = "You lose!";
+			}
